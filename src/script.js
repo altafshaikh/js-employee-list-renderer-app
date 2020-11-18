@@ -64,3 +64,64 @@ function findByEmail(email){
 
 console.log(findByEmail(email));
 
+var dummy = [
+
+    {
+        firstName: "altaf",
+        lastName: "shaikh",
+        email: "",
+        company: "", // pick randomly from [Raw Engineering, Contentstack, Surfboard]
+        empid: "", // unique employee id for each employee,
+        age: "", // number
+        address: {
+          city: "boisar",
+          pincode: "",
+          country: "",
+        },
+    },
+    {
+        firstName: "aachal",
+        lastName: "vartak",
+        email: "",
+        company: "", // pick randomly from [Raw Engineering, Contentstack, Surfboard]
+        empid: "", // unique employee id for each employee,
+        age: "", // number
+        address: {
+          city: "virar",
+          pincode: "",
+          country: "",
+        },
+      }
+]
+
+function findElements(object){
+
+    let keys = Object.keys(object);
+
+    let result = dummy.filter(function(emp){
+        // console.log(emp);
+        let flag = true;
+        keys.forEach(function(key){
+            // console.log("object data",object[key]);
+            if(emp[key] === object[key]){
+                console.log("i am here");
+                return true
+            }else{
+                flag = false;
+                return false;
+            }
+        })
+
+        if(flag==true){
+            return true;
+        }else{
+            return false;
+        }
+
+    })
+
+   return result;
+}
+
+console.log(findElements({address:{city:"mubai"}}));
+
