@@ -91,23 +91,67 @@ var dummy = [
           pincode: "",
           country: "",
         },
+      },
+      {
+        firstName: "sagar",
+        lastName: "vartak",
+        email: "",
+        company: "", // pick randomly from [Raw Engineering, Contentstack, Surfboard]
+        empid: "", // unique employee id for each employee,
+        age: "", // number
+        address: {
+          city: "boisar",
+          pincode: "",
+          country: "",
+        },
       }
 ]
 
+function nestedProperty(object){
+
+    let keys = Object.keys(object);
+    let values = Object.values(object);
+    // console.log(typeof(values[1]) == 'object');
+    let nested_property_list = [];
+
+    values.forEach(function(el,index){
+        if(typeof(el) == 'object'){
+            nested_property_list.push(keys[index])
+        }
+    })
+
+    return nested_property_list;
+}
+
 function findElements(object){
 
+    let nested_property_list = nestedProperty(object);
     let keys = Object.keys(object);
 
     let result = dummy.filter(function(emp){
         let flag = true;
         keys.forEach(function(key){
-            
-            if(emp[key] === object[key]){
-                console.log("i am here");
-                return true
+
+            if(nested_property_list.includes(key)){
+                let nested_prop = Object.keys(object[key]);
+                // console.log(nested_keys);
+                nested_prop.forEach(function(prop){
+                    // console.log(emp[key][prop]);
+                    if(emp[key][prop] === object[key][prop]){
+                        return true
+                    }else{
+                        flag = false;
+                        return false;
+                    }
+                })
             }else{
-                flag = false;
-                return false;
+
+                if(emp[key] === object[key]){
+                    return true
+                }else{
+                    flag = false;
+                    return false;
+                }
             }
         })
 
@@ -122,5 +166,5 @@ function findElements(object){
    return result;
 }
 
-console.log(findElements({address:{city:"mubai"}}));
+console.log(findElements({firstName: "aachal",address:{city:"virar"}}));
 
