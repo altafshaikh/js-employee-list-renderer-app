@@ -186,3 +186,18 @@ function findByIdAndUpdate(id,object){
 
 console.log(findByIdAndUpdate(2,{email:"aachal.vartak@raweng.com"}));
 console.log(dummy);
+
+
+function deleteById(id){
+
+    let objIndex = dummy.findIndex(function(emp){
+
+        return emp.empid == id;
+    })
+
+    delete dummy[objIndex];
+
+   return dummy;
+} 
+
+console.log(deleteById(2));
