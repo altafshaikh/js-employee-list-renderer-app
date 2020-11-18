@@ -3,7 +3,7 @@ var id;
 var email;
 
 var Employee = function(firstname, lastname, age, city, pincode, country){
-    this.emp_id = Math.floor(Math.random() * 10000);
+    this.empid = Math.floor(Math.random() * 10000);
     id =this.emp_id ;
     this.firstName = firstname;
     this.lastName = lastname;
@@ -11,11 +11,11 @@ var Employee = function(firstname, lastname, age, city, pincode, country){
     this.email = this.firstName+'.'+this.lastName+'@'+this.company+'.com';
     email = this.email;
     this.age = age;
-    this.address = [{
+    this.address = {
         city: city,
         pincode: pincode,
         country: country,
-      }]
+      }
 }
 
 function generateEmployeeList(int){
@@ -43,7 +43,7 @@ function findById(id) {
     
     let result = employees.find(function(emp){
 
-        return emp.emp_id == id;
+        return emp.empid == id;
     })
 
    return result;
@@ -71,7 +71,7 @@ var dummy = [
         lastName: "shaikh",
         email: "",
         company: "", // pick randomly from [Raw Engineering, Contentstack, Surfboard]
-        empid: "", // unique employee id for each employee,
+        empid: "1", // unique employee id for each employee,
         age: "", // number
         address: {
           city: "boisar",
@@ -84,7 +84,7 @@ var dummy = [
         lastName: "vartak",
         email: "",
         company: "", // pick randomly from [Raw Engineering, Contentstack, Surfboard]
-        empid: "", // unique employee id for each employee,
+        empid: "2", // unique employee id for each employee,
         age: "", // number
         address: {
           city: "virar",
@@ -97,7 +97,7 @@ var dummy = [
         lastName: "vartak",
         email: "",
         company: "", // pick randomly from [Raw Engineering, Contentstack, Surfboard]
-        empid: "", // unique employee id for each employee,
+        empid: "3", // unique employee id for each employee,
         age: "", // number
         address: {
           city: "boisar",
@@ -107,7 +107,7 @@ var dummy = [
       }
 ]
 
-function nestedProperty(object){
+function getNestedProperty(object){
 
     let keys = Object.keys(object);
     let values = Object.values(object);
@@ -125,7 +125,7 @@ function nestedProperty(object){
 
 function findElements(object){
 
-    let nested_property_list = nestedProperty(object);
+    let nested_property_list = getNestedProperty(object);
     let keys = Object.keys(object);
 
     let result = dummy.filter(function(emp){
@@ -168,3 +168,21 @@ function findElements(object){
 
 console.log(findElements({firstName: "aachal",address:{city:"virar"}}));
 
+function findByIdAndUpdate(id,object){
+
+    let empObj = dummy.find(function(emp){
+
+        return emp.empid == id;
+    })
+
+    let keys = Object.keys(object);
+
+    keys.forEach(function(key){
+        empObj[key] = object[key];
+    })
+
+   return empObj;
+} 
+
+console.log(findByIdAndUpdate(2,{email:"aachal.vartak@raweng.com"}));
+console.log(dummy);
