@@ -99,10 +99,9 @@ function findElements(object){
     let keys = Object.keys(object);
 
     let result = dummy.filter(function(emp){
-        // console.log(emp);
         let flag = true;
         keys.forEach(function(key){
-            // console.log("object data",object[key]);
+            
             if(emp[key] === object[key]){
                 console.log("i am here");
                 return true
