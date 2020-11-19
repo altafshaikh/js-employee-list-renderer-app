@@ -192,16 +192,15 @@ function findByIdAndUpdate(id,object){
     let keys = Object.keys(object);
 
     keys.forEach(function(key){
-        empObj[key] = object[key];
+        if(Object.keys(empObj).includes(key))
+            empObj[key] = object[key];
     })
-    
-    
 
    return empObj;
 } 
 
-console.log(findByIdAndUpdate(3,{email:"sagar.vartak@raweng.com"}));
-console.log(dummy);
+console.log(findByIdAndUpdate(3,{email:"sagar.vartak@raweng.com",phone:"00000"}));
+console.log("update",dummy);
 
 
 function deleteById(id){
@@ -231,6 +230,6 @@ const addEmployeeToDom = (emp) =>{
 
 addEmployeeToDom(employees[0]);
 
-// employees.forEach((emp,index)=>{
-//     addEmployeeToDom(emp);
-// })
+employees.forEach((emp)=>{
+    addEmployeeToDom(emp);
+})
