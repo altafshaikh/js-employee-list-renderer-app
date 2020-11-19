@@ -135,46 +135,44 @@ function getNestedProperty(object){
 }
 
 function findElements(object){
-
+    //get list of nested property
     let nested_property_list = getNestedProperty(object);
     let keys = Object.keys(object);
 
-    let result = dummy.filter(function(emp){
+    return dummy.filter(function(emp){
+        //flag to keep track if an emp obj satisfys all condition or not
         let flag = true;
-        keys.forEach(function(key){
 
+        keys.forEach(function(key){
             if(nested_property_list.includes(key)){
                 let nested_prop = Object.keys(object[key]);
-                // console.log(nested_keys);
                 nested_prop.forEach(function(prop){
-                    // console.log(emp[key][prop]);
+                    // emp[key][prop] to access array value
                     if(emp[key][prop] === object[key][prop]){
-                        return true
+                        return true  //foreach expect a return value
                     }else{
                         flag = false;
-                        return false;
+                        return false; //foreach expect a return value
                     }
                 })
             }else{
 
                 if(emp[key] === object[key]){
-                    return true
+                    return true //foreach expect a return value
                 }else{
                     flag = false;
-                    return false;
+                    return false; //foreach expect a return value
                 }
             }
         })
 
         if(flag==true){
-            return true;
+            return true; // current emp obj statisfy all condition
         }else{
-            return false;
+            return false; // current emp obj does not statisfy all condition
         }
 
     })
-
-   return result;
 }
 
 console.log("find element",findElements({firstName: "altaf",address:{city:"boisar"}}));
