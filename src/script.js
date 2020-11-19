@@ -123,16 +123,13 @@ var dummy = [
 
 function getNestedProperty(object){
 
-    let keys = Object.keys(object);
-    let values = Object.values(object);
-    // console.log(typeof(values[1]) == 'object');
     let nested_property_list = [];
 
-    values.forEach(function(el,index){
-        if(typeof(el) == 'object'){
-            nested_property_list.push(keys[index])
-        }
-    })
+    for (const property in object) {
+        if(typeof(object[property]) == 'object'){
+            nested_property_list.push(property);
+        }       
+    }
 
     return nested_property_list;
 }
@@ -180,7 +177,7 @@ function findElements(object){
    return result;
 }
 
-console.log(findElements({firstName: "altaf",address:{city:"boisar"}}));
+console.log("find element",findElements({firstName: "altaf",address:{city:"boisar"}}));
 
 function findByIdAndUpdate(id,object){
 
