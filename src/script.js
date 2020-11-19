@@ -14,7 +14,7 @@ var Employee = function(firstname, lastname, age, city, pincode, country){
       }
 }
 
-function generateEmployeeList(int){
+const generateEmployeeList = (int) => {
 
     for(var i=0;i<int;i++){
 
@@ -35,16 +35,16 @@ function generateEmployeeList(int){
 generateEmployeeList(10);
 console.log("generated list",employees)
 
-function findById(id) {
+const findById = (id) => {
     
-    return employees.find(function(emp){
+    return employees.find((emp) => {
         return emp.empid == id;
     })
 }
 console.log("find by id",findById(employees[0].empid));
 
 
-function createEmployee(firstName,lastName){
+const createEmployee = (firstName,lastName) => {
     age = Math.floor(Math.random() * 100);
     city = faker.address.city();
     pincode = faker.address.zipCode();
@@ -59,16 +59,16 @@ function createEmployee(firstName,lastName){
 console.log("Created",createEmployee("altaf","shaikh"));
 
 
-function findByEmail(email){
+const findByEmail = (email) => {
     
-    return employees.find(function(emp){
+    return employees.find((emp) => {
         return emp.email == email;
     })
 }
 
 console.log("find by email",findByEmail(employees[0].email));
 
-function getNestedProperty(object){
+const getNestedProperty = (object) => {
 
     let nested_property_list = [];
 
@@ -81,19 +81,19 @@ function getNestedProperty(object){
     return nested_property_list;
 }
 
-function findElements(object){
+const findElements = (object) => {
     //get list of nested property
     let nested_property_list = getNestedProperty(object);
     let keys = Object.keys(object);
 
-    return employees.filter(function(emp){
+    return employees.filter((emp) => {
         //flag to keep track if an emp obj satisfys all condition or not
         let flag = true;
 
-        keys.forEach(function(key){
+        keys.forEach((key) => {
             if(nested_property_list.includes(key)){
                 let nested_prop = Object.keys(object[key]);
-                nested_prop.forEach(function(prop){
+                nested_prop.forEach((prop) => {
                     // emp[key][prop] to access array value
                     if(emp[key][prop] === object[key][prop]){
                         return true  //foreach expect a return value
@@ -124,15 +124,15 @@ function findElements(object){
 
 console.log("find element",findElements({firstName: "altaf"}));
 
-function findByIdAndUpdate(id,updateObject){
+const findByIdAndUpdate = (id,updateObject) => {
 
-    let empObj = employees.find(function(emp){
+    let empObj = employees.find((emp) => {
         return emp.empid == id;
     })
 
     let keys = Object.keys(updateObject);
 
-    keys.forEach(function(key){
+    keys.forEach((key) => {
         if(Object.keys(empObj).includes(key))
             empObj[key] = updateObject[key];
     })
@@ -144,9 +144,9 @@ console.log("updated obj",findByIdAndUpdate(employees[0].empid,{email:"sagar.var
 console.log("after update",employees);
 
 
-function deleteById(id){
+const deleteById = (id) => {
 
-    let objIndex = employees.findIndex(function(emp){
+    let objIndex = employees.findIndex((emp) => {
         return emp.empid == id;
     })
 
@@ -158,7 +158,7 @@ function deleteById(id){
 console.log("after delete",deleteById(employees[4].empid));
 
 
-const addEmployeeToDom = (emp) =>{
+const addEmployeeToDom = (emp) => {
     const p = document.createElement("p");
     let name = `${emp.firstName} ${emp.lastName}`;
     p.innerHTML = name;
