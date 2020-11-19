@@ -4,7 +4,7 @@ var email;
 
 var Employee = function(firstname, lastname, age, city, pincode, country){
     this.empid = Math.floor(Math.random() * 10000);
-    id =this.emp_id ;
+    id =this.empid ;
     this.firstName = firstname;
     this.lastName = lastname;
     this.company = "surfboard";
@@ -49,8 +49,22 @@ function findById(id) {
    return result;
 
 }
-
 console.log(findById(id));
+
+function createEmployee(firstName,lastName){
+    age = Math.floor(Math.random() * 100);
+    city = faker.address.city();
+    pincode = faker.address.zipCode();
+    country = faker.address.country();
+    
+    let emp = new Employee(firstName,lastName,age,city,pincode,country);
+    employees.push(emp);
+
+    return emp;
+}
+
+console.log(createEmployee("altaf","shaikh"));
+
 
 function findByEmail(email){
     
@@ -166,7 +180,7 @@ function findElements(object){
    return result;
 }
 
-console.log(findElements({firstName: "aachal",address:{city:"virar"}}));
+console.log(findElements({firstName: "altaf",address:{city:"boisar"}}));
 
 function findByIdAndUpdate(id,object){
 
@@ -180,11 +194,13 @@ function findByIdAndUpdate(id,object){
     keys.forEach(function(key){
         empObj[key] = object[key];
     })
+    
+    
 
    return empObj;
 } 
 
-console.log(findByIdAndUpdate(2,{email:"aachal.vartak@raweng.com"}));
+console.log(findByIdAndUpdate(3,{email:"sagar.vartak@raweng.com"}));
 console.log(dummy);
 
 
