@@ -1,15 +1,11 @@
 var employees = []
-var id;
-var email;
 
 var Employee = function(firstname, lastname, age, city, pincode, country){
     this.empid = Math.floor(Math.random() * 10000);
-    id =this.empid ;
     this.firstName = firstname;
     this.lastName = lastname;
     this.company = "surfboard";
     this.email = this.firstName+'.'+this.lastName+'@'+this.company+'.com';
-    email = this.email;
     this.age = age;
     this.address = {
         city: city,
@@ -37,19 +33,16 @@ function generateEmployeeList(int){
 } 
 
 generateEmployeeList(10);
-console.log(employees)
+console.log("generated list",employees)
 
 function findById(id) {
     
-    let result = employees.find(function(emp){
-
+    return employees.find(function(emp){
         return emp.empid == id;
     })
-
-   return result;
-
 }
-console.log(findById(id));
+console.log("find by id",findById(employees[0].empid));
+
 
 function createEmployee(firstName,lastName){
     age = Math.floor(Math.random() * 100);
@@ -63,63 +56,17 @@ function createEmployee(firstName,lastName){
     return emp;
 }
 
-console.log(createEmployee("altaf","shaikh"));
+console.log("Created",createEmployee("altaf","shaikh"));
 
 
 function findByEmail(email){
     
-    let result = employees.find(function(emp){
-
+    return employees.find(function(emp){
         return emp.email == email;
     })
-
-   return result;
 }
 
-console.log(findByEmail(email));
-
-var dummy = [
-
-    {
-        firstName: "altaf",
-        lastName: "shaikh",
-        email: "",
-        company: "", // pick randomly from [Raw Engineering, Contentstack, Surfboard]
-        empid: "1", // unique employee id for each employee,
-        age: "", // number
-        address: {
-          city: "boisar",
-          pincode: "",
-          country: "",
-        },
-    },
-    {
-        firstName: "aachal",
-        lastName: "vartak",
-        email: "",
-        company: "", // pick randomly from [Raw Engineering, Contentstack, Surfboard]
-        empid: "2", // unique employee id for each employee,
-        age: "", // number
-        address: {
-          city: "virar",
-          pincode: "",
-          country: "",
-        },
-      },
-      {
-        firstName: "sagar",
-        lastName: "vartak",
-        email: "",
-        company: "", // pick randomly from [Raw Engineering, Contentstack, Surfboard]
-        empid: "3", // unique employee id for each employee,
-        age: "", // number
-        address: {
-          city: "boisar",
-          pincode: "",
-          country: "",
-        },
-      }
-]
+console.log("find by email",findByEmail(employees[0].email));
 
 function getNestedProperty(object){
 
@@ -139,7 +86,7 @@ function findElements(object){
     let nested_property_list = getNestedProperty(object);
     let keys = Object.keys(object);
 
-    return dummy.filter(function(emp){
+    return employees.filter(function(emp){
         //flag to keep track if an emp obj satisfys all condition or not
         let flag = true;
 
@@ -175,44 +122,41 @@ function findElements(object){
     })
 }
 
-console.log("find element",findElements({firstName: "altaf",address:{city:"boisar"}}));
+console.log("find element",findElements({firstName: "altaf"}));
 
-function findByIdAndUpdate(id,object){
+function findByIdAndUpdate(id,updateObject){
 
-    let empObj = dummy.find(function(emp){
-
+    let empObj = employees.find(function(emp){
         return emp.empid == id;
     })
 
-    let keys = Object.keys(object);
+    let keys = Object.keys(updateObject);
 
     keys.forEach(function(key){
         if(Object.keys(empObj).includes(key))
-            empObj[key] = object[key];
+            empObj[key] = updateObject[key];
     })
 
    return empObj;
 } 
 
-console.log(findByIdAndUpdate(3,{email:"sagar.vartak@raweng.com",phone:"00000"}));
-console.log("update",dummy);
+console.log("updated obj",findByIdAndUpdate(employees[0].empid,{email:"sagar.vartak@raweng.com",phone:"00000"}));
+console.log("after update",employees);
 
 
 function deleteById(id){
 
-    let objIndex = dummy.findIndex(function(emp){
-
+    let objIndex = employees.findIndex(function(emp){
         return emp.empid == id;
     })
-    
+
     // delete dummy[objIndex] will only delete the reference
+    employees.splice(objIndex,1);
 
-    dummy.splice(objIndex,1);
-
-   return dummy;
+   return employees;
 } 
+console.log("after delete",deleteById(employees[4].empid));
 
-console.log("after delete",deleteById(2));
 
 const addEmployeeToDom = (emp) =>{
     const p = document.createElement("p");
