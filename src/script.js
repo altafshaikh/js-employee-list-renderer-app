@@ -210,10 +210,27 @@ function deleteById(id){
 
         return emp.empid == id;
     })
+    
+    // delete dummy[objIndex] will only delete the reference
 
-    delete dummy[objIndex];
+    dummy.splice(objIndex,1);
 
    return dummy;
 } 
 
-console.log(deleteById(2));
+console.log("after delete",deleteById(2));
+
+const addEmployeeToDom = (emp) =>{
+    const p = document.createElement("p");
+    let name = `${emp.firstName} ${emp.lastName}`;
+    p.innerHTML = name;
+    p.setAttribute("id",emp.empid);
+    let div = document.getElementById("root");
+    div.appendChild(p);
+}
+
+addEmployeeToDom(employees[0]);
+
+// employees.forEach((emp,index)=>{
+//     addEmployeeToDom(emp);
+// })
