@@ -147,17 +147,71 @@ const deleteById = (id) => {
 };
 console.log("after delete", deleteById(employees[4].empid));
 
-const addEmployeeToDom = (emp) => {
+const employeeNamePara = (employee) => {
   const p = document.createElement("p");
-  let name = `${emp.firstName} ${emp.lastName}`;
-  p.innerHTML = name;
-  p.setAttribute("id", emp.empid);
-  let div = document.getElementById("root");
-  div.appendChild(p);
+  p.innerHTML = `${employee.firstName} ${employee.lastName}`;
+  p.id = employee.empid;
+  p.classList.add("employee-name");
+
+  return p;
 };
 
-addEmployeeToDom(employees[0]);
+const createPara = (text, className = "") => {
+  const p = document.createElement("p");
+  p.innerHTML = text;
+  p.classList.add(className);
 
-employees.forEach((emp) => {
+  return p;
+};
+
+const createProfileImg = (src, alt) => {
+  const div = document.createElement("div");
+  div.classList.add("profile-img");
+
+  const img = document.createElement("img");
+  img.setAttribute("src", src);
+  img.setAttribute("alt", alt);
+  console.log(img);
+  div.appendChild(img);
+
+  return div;
+};
+
+const createCardContent = (employee) => {
+  const div = document.createElement("div");
+  div.classList.add("card-content");
+  const empNamepara = employeeNamePara(employee);
+  const company = createPara(employee.company, "company");
+
+  div.appendChild(empNamepara);
+  div.appendChild(company);
+
+  return div;
+};
+
+const createCard = (employee) => {
+  const div = document.createElement("div");
+  div.classList.add("card");
+
+  const profileImg = createProfileImg(employee.picUrl, employee.altDescp);
+  const cardContent = createCardContent(employee);
+
+  div.appendChild(profileImg);
+  div.appendChild(cardContent);
+
+  return div;
+};
+
+const addEmployeeToDom = (employee) => {
+  const card = createCard(employee);
+  const rootDiv = document.getElementById("employees");
+  rootDiv.appendChild(card);
+
+  return card;
+};
+
+// addEmployeeToDom(Trainees[0]);
+
+Trainees.forEach((emp) => {
   addEmployeeToDom(emp);
 });
