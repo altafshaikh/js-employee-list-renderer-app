@@ -3,33 +3,28 @@
 } */
 /* employee section */
 
-.employee-container {
-  padding: 0 12px;
-}
-
-.employee-container .employees {
+.employee-container #employees {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-
-.employee-container .card {
+.card {
   box-shadow: 4px 4px 8px 0 rgba(250, 46, 46, 0.2);
   transition: 0.3s;
   border-radius: 5px;
-  margin: 20px auto;
+  margin: 10px 10px;
+  width: 30%;
 }
 
-.employee-container .card:hover {
+.card:hover {
   box-shadow: 8px 8px 16px 0 rgba(255, 79, 79, 0.2);
 }
 
-.employee-container .card .profile-img img {
-  width: 330px;
-  height: 250px;
+.profile-img img {
+  width: 100%;
 }
 
-.employee-container .card .card-content {
+.card .card-content {
   padding: 2px 16px;
 }
 
