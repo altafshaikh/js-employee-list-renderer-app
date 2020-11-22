@@ -164,6 +164,18 @@ const createPara = (text, className = "") => {
   return p;
 };
 
+const createLink = (element, text = "", href, className = "") => {
+  const a = document.createElement("a");
+  a.appendChild(element);
+  a.classList.add(className);
+  a.href = href;
+  if (text) {
+    a.innerHTML = text;
+  }
+
+  return a;
+};
+
 const createProfileImg = (src, alt) => {
   const div = document.createElement("div");
   div.classList.add("profile-img");
@@ -171,7 +183,6 @@ const createProfileImg = (src, alt) => {
   const img = document.createElement("img");
   img.setAttribute("src", src);
   img.setAttribute("alt", alt);
-  console.log(img);
   div.appendChild(img);
 
   return div;
@@ -181,9 +192,15 @@ const createCardContent = (employee) => {
   const div = document.createElement("div");
   div.classList.add("card-content");
   const empNamepara = employeeNamePara(employee);
+  const linkPara = createLink(
+    empNamepara,
+    "",
+    employee.profileUrl,
+    "profile-link"
+  );
   const company = createPara(employee.company, "company");
 
-  div.appendChild(empNamepara);
+  div.appendChild(linkPara);
   div.appendChild(company);
 
   return div;

@@ -2,6 +2,10 @@
   border: 1px solid red;
 } */
 /* employee section */
+/* body {
+  background-color: black;
+  color: antiquewhite;
+} */
 .section-title {
   text-align: center;
   font-size: 2.5vw;
@@ -37,21 +41,43 @@
   border-bottom: 1px solid red;
   margin: 2px 0;
 }
+.profile-link {
+  text-decoration: none;
+  color: blueviolet;
+  text-align: center;
+}
+.company {
+  color: rgb(180, 105, 250);
+  text-align: center;
+}
 
 /* //employee section */
 @media (max-width: 575.98px) {
+  .section-title {
+    font-size: 5vw;
+  }
   .employee-container #employees {
     display: block;
     margin: 0 auto;
   }
   .card {
-    width: 55%;
+    width: 55% !important;
     margin: 3% auto !important;
   }
 }
 /* //employee section */
 @media (max-width: 767.98px) {
+  .section-title {
+    font-size: 4vw;
+  }
   .card {
+    width: 45%;
     margin: 8px 8px;
+  }
+}
+
+@media (max-width: 967.98px) {
+  .card {
+    width: 30%;
   }
 }
