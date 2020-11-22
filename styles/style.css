@@ -2,18 +2,23 @@
   border: 1px solid red;
 } */
 /* employee section */
-
+.section-title {
+  text-align: center;
+  font-size: 2.5vw;
+  font-weight: 900;
+}
 .employee-container #employees {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 .card {
   box-shadow: 4px 4px 8px 0 rgba(250, 46, 46, 0.2);
   transition: 0.3s;
   border-radius: 5px;
-  margin: 10px 10px;
-  width: 30%;
+  margin: 8px 10px;
+  width: 18%;
 }
 
 .card:hover {
@@ -34,3 +39,19 @@
 }
 
 /* //employee section */
+@media (max-width: 575.98px) {
+  .employee-container #employees {
+    display: block;
+    margin: 0 auto;
+  }
+  .card {
+    width: 55%;
+    margin: 3% auto !important;
+  }
+}
+/* //employee section */
+@media (max-width: 767.98px) {
+  .card {
+    margin: 8px 8px;
+  }
+}
