@@ -22,7 +22,8 @@
   transition: 0.3s;
   border-radius: 5px;
   margin: 8px 10px;
-  width: 18%;
+  width: 20%;
+  height: 48vh;
 }
 
 .card:hover {
@@ -31,6 +32,7 @@
 
 .profile-img img {
   width: 100%;
+  height: 35vh;
 }
 
 .card .card-content {
