@@ -1,4 +1,7 @@
-const createCard = (employee) => {
+import { createProfileImg } from "./createProfileImg.js";
+import { createCardContent } from "./createCardContent.js";
+
+export const createCard = (employee) => {
   const div = document.createElement("div");
   div.classList.add("card");
 

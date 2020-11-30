@@ -1,4 +1,8 @@
-const createCardContent = (employee) => {
+import { employeeNamePara } from "../helper/employeeNamepara.js";
+import { createPara } from "../helper/createPara.js";
+import { createLink } from "../helper/createLink.js";
+
+export const createCardContent = (employee) => {
   const div = document.createElement("div");
   div.classList.add("card-content");
   const empNamepara = employeeNamePara(employee);
