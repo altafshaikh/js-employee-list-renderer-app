@@ -8,7 +8,7 @@ export const createCard = (employee) => {
   const cardWrapper = document.createElement("div");
   cardWrapper.classList.add("card-wrapper");
 
-  const profileImg = createProfileImg(employee.picUrl, employee.altDescp);
+  const profileImg = createProfileImg(employee.imageUrl, "image descp");
   const cardContent = createCardContent(employee);
 
   cardWrapper.appendChild(profileImg);

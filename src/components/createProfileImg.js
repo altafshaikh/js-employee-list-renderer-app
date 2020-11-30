@@ -1,4 +1,4 @@
-const createProfileImg = (src, alt) => {
+export const createProfileImg = (src, alt) => {
   const div = document.createElement("div");
   div.classList.add("profile-img");
 
