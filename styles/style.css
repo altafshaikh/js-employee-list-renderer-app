@@ -2,6 +2,10 @@
   border: 1px solid red;
 } */
 
+body {
+  margin: 0;
+}
+
 /* employee section */
 .section-title {
   text-align: center;
@@ -53,6 +57,39 @@
   text-align: center;
 }
 
+/* footer */
+
+footer {
+  background-color: black;
+  color: white;
+  height: 20vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+footer .copy {
+  text-align: center;
+}
+
+footer .social-links a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+footer .social-links a:hover {
+  color: #2f9ee5;
+}
+
+footer .copy span {
+  color: #ff0000;
+}
+
+/* //footer */
+
 /* //employee section */
 @media (max-width: 575.98px) {
   .section-title {
@@ -65,6 +102,9 @@
   .card {
     width: 55% !important;
     margin: 3% auto !important;
+  }
+  footer {
+    flex-direction: column;
   }
 }
 /* //employee section */
