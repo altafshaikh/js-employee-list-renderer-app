@@ -60,13 +60,17 @@ body {
   border-bottom: 1px solid red;
   margin: 2px 0;
 }
+.employee-name {
+  font-weight: bold;
+  font-size: 18px;
+  color: rgb(132, 0, 255);
+}
 .profile-link {
   text-decoration: none;
-  color: blueviolet;
   text-align: center;
 }
 .company {
-  color: rgb(180, 105, 250);
+  color: rgb(58, 30, 216);
   text-align: center;
 }
 /* //employee section */
@@ -141,6 +145,7 @@ footer .social-links a:hover {
 
 footer .copy span {
   color: #2f9ee5;
+  font-weight: bold;
 }
 
 /* //footer */
