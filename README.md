@@ -27,7 +27,7 @@ A vanila JS application which fetches data from a external api in JSON format an
 
 ## Sample Working
 
-
+![employee-card-demo](https://ialtafshaikh.github.io/static-files/gifs/employee-card.gif)
 
 ### Downloading and Running this Project Locally
 1. clone the repository using below command
